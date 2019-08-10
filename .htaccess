@@ -1,0 +1,11 @@
+# Setup CGI mappings
+DirectoryIndex index.cgi
+FallbackResource goaccess.cgi
+
+# Hide sensitive files
+RedirectMatch 404 /\.git
+RedirectMatch 404 /\.env
+
+# Keep out of search engines and referrer reports
+Header always set X-Robots-Tag    "noindex, nofollow"
+Header always set Referrer-Policy "no-referrer"
