@@ -43,7 +43,7 @@ export HOME
 
 vcombinelogs \
 | goaccess - -o "$OUTPUT" --no-progress --log-format=VCOMBINED --no-global-config \
-   --html-report-title="$SITEGLOB" --log-size="$LOGSIZE" \
+   --html-report-title="$SITEGLOB" --log-size="$LOGSIZE" --html-prefs='{"theme":"bright"}' \
    --agent-list --http-protocol=no --http-method=yes 
 
 echo "Content-type: text/html"
