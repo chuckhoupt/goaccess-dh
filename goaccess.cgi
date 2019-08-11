@@ -7,7 +7,7 @@ shopt -s extglob nullglob
 
 BASE=$(dirname "$0")
 HOME=${HOME:-${DOCUMENT_ROOT%/${DOCUMENT_ROOT#/home/*/}}}
-PATH=$BASE:$PATH
+PATH=$BASE/bin:$PATH
 
 [[ -f "$BASE/.env" ]] && source "$BASE"/.env 
 
@@ -37,7 +37,7 @@ function vcombinelogs {
 
 OUTPUT=$(mktemp -t XXXXXXXXXX.html)
 
-# GoAccess needs HOME
+# GoAccess needs HOME defined
 export HOME
 
 vcombinelogs \
