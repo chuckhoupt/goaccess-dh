@@ -8,6 +8,7 @@ shopt -s extglob nullglob
 BASE=$(dirname "$0")
 HOME=${HOME:-${DOCUMENT_ROOT%/${DOCUMENT_ROOT#/home/*/}}}
 
+# shellcheck source=/dev/null
 [[ -f "$BASE/.env" ]] && source "$BASE"/.env 
 
 LOGS=${LOGS:-$HOME/logs}
@@ -106,9 +107,9 @@ function sites
 function sitename {
 	if [[ "$1" =~ ^xn\-\- ]]
 	then
-		python -c 'import sys; print sys.argv[1].decode("idna").encode("utf-8")' $1
+		python -c 'import sys; print sys.argv[1].decode("idna").encode("utf-8")' "$1"
 	else
-		echo $1
+		echo "$1"
 	fi
 }
 
@@ -121,7 +122,7 @@ cat <<ENDITEM
     <img alt src="http://$SITE/apple-touch-icon.png" 
          onload="this.style.visibility='visible'" onerror="loadfavicon(this, '$SITE')">
     <br>
-    $(sitename $SITE)
+    $(sitename "$SITE")
   </a>
 </li>
 ENDITEM

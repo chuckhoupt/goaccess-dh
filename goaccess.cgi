@@ -9,6 +9,7 @@ BASE=$(dirname "$0")
 HOME=${HOME:-${DOCUMENT_ROOT%/${DOCUMENT_ROOT#/home/*/}}}
 PATH=$BASE/bin:$PATH
 
+# shellcheck source=/dev/null
 [[ -f "$BASE/.env" ]] && source "$BASE"/.env 
 
 LOGS=${LOGS:-$HOME/logs}
@@ -29,9 +30,9 @@ LOGSIZE=$1
 function vcombinelogs {
 	for SITE in "${SITES[@]}"
 	do
-		VHOST=$(basename $SITE)
+		VHOST=$(basename "$SITE")
 		SITELOGS=($SITE/http?(s)/access.log?(.2*))
-		zcat -f ${SITELOGS[@]} | sed "s/^/$VHOST:0 /"
+		zcat -f "${SITELOGS[@]}" | sed "s/^/$VHOST:0 /"
 	done
 }
 
@@ -41,11 +42,11 @@ OUTPUT=$(mktemp -t XXXXXXXXXX.html)
 export HOME
 
 vcombinelogs \
-| goaccess - -o $OUTPUT --no-progress --log-format=VCOMBINED --no-global-config \
+| goaccess - -o "$OUTPUT" --no-progress --log-format=VCOMBINED --no-global-config \
    --html-report-title="$SITEGLOB" --log-size="$LOGSIZE" \
    --agent-list --http-protocol=no --http-method=yes 
 
 echo "Content-type: text/html"
 echo ""
-cat $OUTPUT
-rm  $OUTPUT
+cat "$OUTPUT"
+rm  "$OUTPUT"

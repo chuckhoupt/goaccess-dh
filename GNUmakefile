@@ -10,3 +10,6 @@ goaccess/Makefile :
 clean : goaccess/Makefile
 	$(MAKE) --directory goaccess clean
 	-rm -r bin	
+
+test :
+	shellcheck *.cgi
