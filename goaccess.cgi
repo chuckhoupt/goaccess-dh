@@ -36,17 +36,13 @@ function vcombinelogs {
 	done
 }
 
-OUTPUT=$(mktemp -t XXXXXXXXXX.html)
-
 # GoAccess needs HOME defined
 export HOME
 
-vcombinelogs \
-| goaccess - -o "$OUTPUT" --no-progress --log-format=VCOMBINED --no-global-config \
-   --html-report-title="$SITEGLOB" --log-size="$LOGSIZE" --html-prefs='{"theme":"bright"}' \
-   --agent-list --http-protocol=no --http-method=yes 
-
 echo "Content-type: text/html"
 echo ""
-cat "$OUTPUT"
-rm  "$OUTPUT"
+
+vcombinelogs \
+| goaccess - -o html --no-progress --log-format=VCOMBINED --no-global-config \
+   --html-report-title="$SITEGLOB" --log-size="$LOGSIZE" --html-prefs='{"theme":"bright"}' \
+   --agent-list --http-protocol=no --http-method=yes 
