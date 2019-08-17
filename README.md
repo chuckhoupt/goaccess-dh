@@ -57,3 +57,13 @@ Further Configuration
 
    Setup password protection for the `goaccess-dh` directory via
    [DH's Htaccess Panel](https://panel.dreamhost.com/index.cgi?tree=advanced.webdav&).
+
+
+Related Projects
+----------------
+
+These projects have a similar intent to GoAccess-DH, but require root access:
+
+- [gopanel - Multi-site Web Analytics Menu for goaccess](https://github.com/neocogent/gopanel)
+- [Using GoAccess with PHP](https://gist.github.com/Jiab77/b7eff1dc6c0996b339c753c82e9daa42)
+
