@@ -43,6 +43,8 @@ echo "Content-type: text/html"
 echo ""
 
 vcombinelogs \
-| goaccess - -o html --no-progress --log-format=VCOMBINED --no-global-config \
+  | goaccess - -o html --no-progress --no-global-config \
+   --date-format='%d/%b/%Y' --time-format='%H:%M:%S' \
+   --log-format='%v:%^ %h %^ %e [%d:%t %^] "%r" %s %b "%R" "%u"' \
    --html-report-title="$SITEGLOB" --log-size="$LOGSIZE" --html-prefs='{"theme":"bright"}' \
    --agent-list --http-protocol=no --http-method=yes --ignore-panel=KEYPHRASES
