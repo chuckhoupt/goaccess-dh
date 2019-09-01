@@ -61,20 +61,22 @@ Content-type: text/html
 body {
   font-family: sans-serif;
   background: #f0f0f0;
-  max-width: 50em;
+  max-width: 70em;
   margin: auto;
   text-align: center;
 }
+
 ul.site-list {
-list-style-type: none;
-padding-left: 0;
+  list-style-type: none;
+  padding-left: 0;
+
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(12em, 1fr));
   grid-gap: 10px;
-/*  grid: repeat(2, 60px) / auto-flow 80px; */
-  
 }
+
 .site-list img { height: 48px; width: 48px; visibility: hidden; }
+
 a { text-decoration: none; }
 </style>
 <script>
