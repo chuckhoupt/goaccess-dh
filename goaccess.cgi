@@ -45,4 +45,4 @@ echo ""
 vcombinelogs \
 | goaccess - -o html --no-progress --log-format=VCOMBINED --no-global-config \
    --html-report-title="$SITEGLOB" --log-size="$LOGSIZE" --html-prefs='{"theme":"bright"}' \
-   --agent-list --http-protocol=no --http-method=yes 
+   --agent-list --http-protocol=no --http-method=yes --ignore-panel=KEYPHRASES
