@@ -98,7 +98,8 @@ ENDHEADER
 
 function sites
 {
-	for LOGFILE in $LOGS/$LOGGLOB/http?(s)/access.log.$(date -I --date='-2 days')
+	ACTIVELOGS=$(find $LOGS/$LOGGLOB/http?(s)/access.log -mtime -4)
+	for LOGFILE in $ACTIVELOGS
 	do
 		[[ "$LOGFILE" =~ $LOGS/([^\/]+)/ ]]
 		echo "${BASH_REMATCH[1]}"
