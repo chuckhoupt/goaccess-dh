@@ -4,7 +4,7 @@ GoAccess for DreamHost
 An easy to setup packaging of [GoAccess](https://goaccess.io) for use on [DreamHost](https://www.dreamhost.com) web-hosting
 services (shared servers and VPS).
 
-![MacDown Screenshot](screenshot.png)
+![GoAccess-DH Screenshot](screenshot.png)
 
 Features:
 
