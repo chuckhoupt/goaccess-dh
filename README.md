@@ -22,33 +22,17 @@ Notes:
 Installation
 ------------
 
-GoAccess-DH can be installed anywhere on a web site. It comes with a pre-built binary of GoAccess, or you can build it from scratch.
+GoAccess-DH can be installed anywhere on a web site. It comes with a pre-built binary of GoAccess (see below for building from scratch).
 
 - **Quick Install**
   
-  Download GoAccess-DH from:
+  Log in to a site's shell user (e.g. `ssh myuser@myhost.dreamhost.com`) and clone GoAccess-DH into the site's web directory. For example:
   
-  https://github.com/chuckhoupt/goaccess-dh/archive/master.zip
-
-  Upload/Install in a web directory, such as `~/example.com/goaccess-dh/`.
-  
-  
-- **Build from Source**
-
-  If you'd prefer to build your own binary, log into a shell user and clone GoAccess-DH into `example.com`'s web directory:
-
   ```
-  git clone --recurse-submodules https://github.com/chuckhoupt/goaccess-dh.git ~/example.com/goaccess-dh
+  git clone https://github.com/chuckhoupt/goaccess-dh.git ~/example.com/goaccess-dh
   ```
-
-   Run Make to configure and compile GoAccess:
-   
-   ```
-   make -C ~/example.com/goaccess-dh
-   ```
-
-Now visit `example.com/goaccess-dh/` to see the stats for all sites hosted
-under that shell user.
+  
+  Now visit `example.com/goaccess-dh/` to see stats for all the sites hosted under that shell user.
 
 Further Configuration
 ---------------------
@@ -58,6 +42,20 @@ Further Configuration
    Setup password protection for the `goaccess-dh` directory via
    [DH's Htaccess Panel](https://panel.dreamhost.com/index.cgi?tree=advanced.webdav&).
 
+- **Build from Source**
+
+  If you'd prefer to build your own binary, log into a shell user and clone GoAccess-DH into `example.com`'s web directory:
+
+  ```
+  git clone --recurse-submodules https://github.com/chuckhoupt/goaccess-dh.git ~/example.com/goaccess-dh
+  ```
+
+  Run Make to configure and compile GoAccess:
+   
+  ```
+  make -C ~/example.com/goaccess-dh
+  ```
+  
 
 Related Projects
 ----------------
