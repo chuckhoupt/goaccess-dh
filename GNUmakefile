@@ -1,5 +1,6 @@
 bin/goaccess : goaccess/goaccess
 	$(MAKE) --directory goaccess prefix=$(CURDIR) install-exec
+	strip bin/goaccess
 
 goaccess/goaccess : goaccess/Makefile
 	$(MAKE) --directory goaccess
