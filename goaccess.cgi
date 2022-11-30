@@ -6,7 +6,7 @@ set -Eeuo pipefail
 shopt -s extglob nullglob
 
 BASE=$(dirname "$0")
-HOME=${HOME:-${DOCUMENT_ROOT%/${DOCUMENT_ROOT#/home/*/}}}
+HOME=${HOME:-${DOCUMENT_ROOT%/"${DOCUMENT_ROOT#/home/*/}"}}
 PATH=$BASE/bin:$PATH
 
 # shellcheck source=/dev/null
@@ -19,9 +19,9 @@ SITEGLOB=${1:-$(basename "$SCRIPT_URL")}
 # Sanitize glob to only allow chars in domains and glob patterns
 SITEGLOB=${SITEGLOB//[^a-zA-Z0-9\-.*?+@!\^()\[\]|]/}
 
-SITES=($LOGS/$SITEGLOB)
+SITES=("$LOGS"/$SITEGLOB)
 
-ALLLOGS=($LOGS/$SITEGLOB/http?(s)/access.log?(.2*))
+ALLLOGS=("$LOGS"/$SITEGLOB/http?(s)/access.log?(.2*))
 
 # Calc log size, but note that it is compressed size.
 set $(du -cb "${ALLLOGS[@]}" | tail -1)
@@ -31,7 +31,7 @@ function vcombinelogs {
 	for SITE in "${SITES[@]}"
 	do
 		VHOST=$(basename "$SITE")
-		SITELOGS=($SITE/http?(s)/access.log?(.2*))
+		SITELOGS=("$SITE"/http?(s)/access.log?(.2*))
 		zcat -f "${SITELOGS[@]}" | sed "s/^/$VHOST:0 /"
 	done
 }

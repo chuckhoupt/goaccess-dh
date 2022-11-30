@@ -6,7 +6,7 @@ set -Eeuo pipefail
 shopt -s extglob nullglob
 
 BASE=$(dirname "$0")
-HOME=${HOME:-${DOCUMENT_ROOT%/${DOCUMENT_ROOT#/home/*/}}}
+HOME=${HOME:-${DOCUMENT_ROOT%/"${DOCUMENT_ROOT#/home/*/}"}}
 
 # shellcheck source=/dev/null
 [[ -f "$BASE/.env" ]] && source "$BASE"/.env 
@@ -98,7 +98,7 @@ ENDHEADER
 
 function sites
 {
-	ACTIVELOGS=$(find $LOGS/$LOGGLOB/http?(s)/access.log -mtime -4)
+	ACTIVELOGS=$(find "$LOGS"/$LOGGLOB/http?(s)/access.log -mtime -4)
 	for LOGFILE in $ACTIVELOGS
 	do
 		[[ "$LOGFILE" =~ $LOGS/([^\/]+)/ ]]
