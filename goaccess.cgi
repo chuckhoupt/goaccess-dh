@@ -19,25 +19,20 @@ SITEGLOB=${1:-$(basename "$SCRIPT_URL")}
 # Sanitize glob to only allow chars in domains and glob patterns
 SITEGLOB=${SITEGLOB//[^a-zA-Z0-9\-.*?+@!\^()\[\]|]/}
 
-SITES=("$LOGS"/$SITEGLOB)
-
-ALLLOGS=("$LOGS"/$SITEGLOB/http?(s)/access.log?(.2*))
+readarray -t SITES < <(find "$LOGS"/$SITEGLOB/http?(s)/access.log -mtime -4 -exec dirname {} \;)
 
 # Calc log size, but note that it is compressed size.
-set $(du -cb "${ALLLOGS[@]}" | tail -1)
-LOGSIZE=$1
+ALLLOGS=( ${SITES[@]/%//access.log?(.2*)} )
+LOGSIZE=$(du --total --byte "${ALLLOGS[@]}" | tail -1 | cut --fields=1)
 
 function vcombinelogs {
 	for SITE in "${SITES[@]}"
 	do
-		VHOST=$(basename "$SITE")
-		SITELOGS=("$SITE"/http?(s)/access.log?(.2*))
+		VHOST=$(basename $(dirname "$SITE"))
+		SITELOGS=("$SITE"/access.log?(.2*))
 		zcat -f "${SITELOGS[@]}" | sed "s/^/$VHOST:0 /"
 	done
 }
-
-# GoAccess needs HOME defined
-export HOME
 
 echo "Content-type: text/html"
 echo ""
