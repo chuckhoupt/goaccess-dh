@@ -75,17 +75,10 @@ ul.site-list {
   grid-gap: 10px;
 }
 
-.site-list img { height: 48px; width: 48px; visibility: hidden; }
+.site-list img { image-rendering: pixelated; height: 64px; width: 64px; visibility: hidden; }
 
 a { text-decoration: none; }
 </style>
-<script>
-function loadfavicon(img, site) {
-  var favicon = 'http://'+ site + '/favicon.ico';
-  img.src = (img.src != favicon) ? favicon : 'siteicon.cgi?'+site;
-  return true;
-}
-</script>
 </head>
 <body>
 <h1>GoAccess-DH</h1>
@@ -122,8 +115,9 @@ do
 cat <<ENDITEM
 <li>
   <a href="$SITE">
-    <img alt src="http://$SITE/apple-touch-icon.png" 
-         onload="this.style.visibility='visible'" onerror="loadfavicon(this, '$SITE')">
+    <img alt="$SITE" src="http://$SITE/favicon.ico"
+         onload ="this.style.visibility='visible'"
+         onerror="this.src='siteicon.cgi?$SITE'">
     <br>
     $(sitename "$SITE")
   </a>
