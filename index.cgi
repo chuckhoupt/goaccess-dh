@@ -115,7 +115,7 @@ do
 cat <<ENDITEM
 <li>
   <a href="$SITE">
-    <img alt="$SITE" src="http://$SITE/favicon.ico"
+    <img alt="$SITE" src="//$SITE/favicon.ico"
          onload ="this.style.visibility='visible'"
          onerror="this.src='siteicon.cgi?$SITE'">
     <br>
