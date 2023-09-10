@@ -1,3 +1,6 @@
 [submodule "goaccess"]
 	path = goaccess
 	url = https://github.com/allinurl/goaccess
+[submodule "libmaxminddb"]
+	path = libmaxminddb
+	url = https://github.com/maxmind/libmaxminddb.git
