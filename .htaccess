@@ -5,6 +5,7 @@ FallbackResource goaccess.cgi
 # Hide sensitive files
 RedirectMatch 404 /\.git
 RedirectMatch 404 /\.env
+RedirectMatch 404 "/bin/|/goaccess/|/libmaxminddb/"
 
 # Keep out of search engines and referrer reports
 Header always set X-Robots-Tag    "noindex, nofollow"
