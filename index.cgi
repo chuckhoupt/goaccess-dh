@@ -75,7 +75,7 @@ ul.site-list {
   grid-gap: 10px;
 }
 
-.site-list img { image-rendering: pixelated; height: 64px; width: 64px; visibility: hidden; }
+.site-list img { image-rendering: pixelated; height: 64px; width: 64px; }
 
 a { text-decoration: none; }
 </style>
@@ -116,7 +116,6 @@ cat <<ENDITEM
 <li>
   <a href="$SITE">
     <img alt="$SITE" src="//$SITE/favicon.ico"
-         onload ="this.style.visibility='visible'"
          onerror="this.src='siteicon.cgi?$SITE'">
     <br>
     $(sitename "$SITE")
