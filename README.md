@@ -44,13 +44,7 @@ Further Configuration
 
 - **Build from Source**
 
-  If you'd prefer to build your own binary, log into a shell user and clone GoAccess-DH into `example.com`'s web directory:
-
-  ```
-  git clone https://github.com/chuckhoupt/goaccess-dh.git ~/example.com/goaccess-dh
-  ```
-
-  Run Make to configure and compile GoAccess:
+  If you'd prefer to build your own binary, run Make to configure and compile GoAccess:
    
   ```
   make -C ~/example.com/goaccess-dh/bin
