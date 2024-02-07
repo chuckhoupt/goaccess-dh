@@ -16,7 +16,7 @@ Features:
 Notes:
 
 - Reports use the avaiable raw logs, which DH default to 3 days. Sites can be configured to keep up to 30 days of raw logs in the [Site Statistics Panel](https://panel.dreamhost.com/index.cgi?tree=advanced.stats&).
-- Reports are generated on the fly, so expect ~60 seconds of processing time per million requests.
+- Reports are generated on the fly, so expect ~35 seconds of processing time per million requests.
 
 
 Installation
@@ -47,13 +47,13 @@ Further Configuration
   If you'd prefer to build your own binary, log into a shell user and clone GoAccess-DH into `example.com`'s web directory:
 
   ```
-  git clone --recurse-submodules https://github.com/chuckhoupt/goaccess-dh.git ~/example.com/goaccess-dh
+  git clone https://github.com/chuckhoupt/goaccess-dh.git ~/example.com/goaccess-dh
   ```
 
   Run Make to configure and compile GoAccess:
    
   ```
-  make -C ~/example.com/goaccess-dh
+  make -C ~/example.com/goaccess-dh/bin
   ```
   
 
