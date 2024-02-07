@@ -52,7 +52,7 @@ cat <<ENDHEADER
 Content-type: text/html
 
 <!doctype html>
-<html>
+<html lang="en">
 <head>
 <meta charset=utf-8>
 <title>GoAccess-DH</title>
@@ -115,7 +115,7 @@ do
 cat <<ENDITEM
 <li>
   <a href="$SITE">
-    <img alt="$SITE" src="//$SITE/favicon.ico"
+    <img alt="$SITE" src="//$SITE/favicon.ico" alt
          onerror="this.src='siteicon.cgi?$SITE'">
     <br>
     $(sitename "$SITE")
@@ -129,7 +129,7 @@ cat <<ENDFOOTER
 </ul>
 <p>
 <a href="${LOGGLOB//\?/%3F}">
-<img src="./siteicon.cgi?Z"><img src="./siteicon.cgi?A" style="margin-left: -75px;"><br>
+<img src="./siteicon.cgi?Z" alt><img src="./siteicon.cgi?A" style="margin-left: -75px;" alt><br>
 All Sites: $LOGGLOB
 </a>
 </p>
