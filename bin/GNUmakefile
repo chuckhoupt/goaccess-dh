@@ -1,4 +1,4 @@
-GOACCESS=goaccess-1.9.1
+GOACCESS=goaccess-1.9.2
 LIBMMDBVER=1.9.1
 LIBMMDB=libmaxminddb-$(LIBMMDBVER)
 
